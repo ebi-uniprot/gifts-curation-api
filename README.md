@@ -1,4 +1,4 @@
-# gifts-curation-tool
+# gifts-curation-api
 GIFTs curation tool
 
 + get latest entry mapping by:
