@@ -24,7 +24,7 @@ public class ConnectionHelper {
 
     private void loadProperties() {
         prop = new Properties();
-        String propFileName = "config.properties";
+        String propFileName = "resources\\config.properties";
         try (InputStream inputStream=    getClass().getClassLoader().getResourceAsStream(propFileName)) {
 
             if (inputStream != null) {
