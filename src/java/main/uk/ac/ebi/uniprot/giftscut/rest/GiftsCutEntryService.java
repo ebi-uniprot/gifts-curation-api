@@ -11,6 +11,7 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.UriInfo;
 
+@Path("/entries")
 public class GiftsCutEntryService {
     EntryMappingDAO entryMappingDAO = new EntryMappingDAO();
 

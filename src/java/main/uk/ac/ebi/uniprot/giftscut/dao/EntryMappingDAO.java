@@ -136,6 +136,8 @@ public class EntryMappingDAO {
                 " and et.gene_id=eg.gene_id" +
                 " and mh.ensembl_species_history_id = esh.ensembl_species_history_id" +
                 " and mh.mapping_history_id=eu.mapping_history_id" +
+                " and mh.uniprot_release = u.release_version" +
+                " and eg.ensembl_release=esh.ensembl_release" +
                 filter +
                 " order by eu.timestamp;";
         return findEntryMappings(params, sql);
@@ -164,6 +166,8 @@ public class EntryMappingDAO {
                 " and mh.ensembl_species_history_id = esh.ensembl_species_history_id" +
                 " and mh.mapping_history_id=eu.mapping_history_id" +
                 " and mh.mapping_history_id=b.latest" +
+                " and mh.uniprot_release = u.release_version" +
+                " and eg.ensembl_release=esh.ensembl_release" +
                 filter +
                 " order by eu.timestamp;";
         return findEntryMapping(params, sql);
@@ -218,9 +222,10 @@ public class EntryMappingDAO {
                 " and mh.ensembl_species_history_id = esh.ensembl_species_history_id" +
                 " and mh.mapping_history_id=eu.mapping_history_id" +
                 " and mh.mapping_history_id=b.latest" +
+                " and mh.uniprot_release = u.release_version" +
+                " and eg.ensembl_release=esh.ensembl_release" +
                 filter +
-                " order by eu.timestamp"
-                + " limit 0, 30;";
+                +" limit 0, 30;";
         return findEntryMappingList(params, sql);
     }
 }
