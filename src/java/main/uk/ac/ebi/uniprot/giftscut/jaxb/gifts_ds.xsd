@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:element name="specieMappings">
+		<xs:complexType>
+			 <xs:annotation>
+                       <xs:documentation>Describes a collection of specie mappings.</xs:documentation>
+      	     </xs:annotation>
+			<xs:sequence>
+			    <xs:element ref="specieMappingHistory" minOccurs="1" maxOccurs="unbounded" />
+	         </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:element name="specieMappingHistory"> 
+    <xs:complexType>
+        <xs:annotation>
+            <xs:documentation>Describes specie mapping history.</xs:documentation>
+        </xs:annotation>
+             <xs:sequence>
+			    <xs:element ref="specieMapping" minOccurs="1" maxOccurs="unbounded" />
+	         </xs:sequence>
+        </xs:complexType>
+	</xs:element>
+	
+	<xs:element name="specieMapping">
+		<xs:complexType>
+			 <xs:annotation>
+                       <xs:documentation>Describes a specie mapping.</xs:documentation>
+         	</xs:annotation>
+        	<xs:sequence>
+        		<xs:element ref="entryMapping" minOccurs="0" maxOccurs="unbounded"/>
+        	</xs:sequence>
+        	<xs:attribute name="specie" type="xs:string" />
+        	<xs:attribute name="ensemblTaxId" type="xs:int" />
+        	<xs:attribute name="uniprotTaxId" type="xs:int" />
+        	<xs:attribute name="ensemblRelease" type="xs:int" />
+        	<xs:attribute name="uniprotRelease" type="xs:string" />
+        	<xs:attribute name="timeMapped" type="xs:date" />
+        	<xs:attribute name="entriesMapped" type="xs:int" />
+        	<xs:attribute name="entriesUnmapped" type="xs:int" />
+        </xs:complexType>
+   </xs:element>
+   
+   <xs:element name="entryMapping">
+   		<xs:complexType>
+			 <xs:annotation>
+                   <xs:documentation>Describes a single mapping between Uniprot protein and Ensembl transcript.</xs:documentation>
+         	</xs:annotation>
+         	<xs:sequence>
+         		<xs:element name="uniprotEntry" type="uniprotEntryType" />
+         		<xs:element name="ensemblTranscript" type="ensemblTranscriptType" />
+         		<xs:element name="annotation" type="annotationType"/>
+         	</xs:sequence>
+    	</xs:complexType>
+    </xs:element>
+    
+         <xs:simpleType name="statusType">
+       <xs:annotation>
+          <xs:documentation>
+             Enumeration for mapping status.
+          </xs:documentation>
+       </xs:annotation>
+       <xs:restriction base="xs:string">
+            <xs:enumeration value="NOT_REVIEWED"/>
+            <xs:enumeration value="UNDER_REVIEW"/>
+            <xs:enumeration value="REVIEWED"/>
+       </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="annotationType">
+    		<xs:annotation>
+                   <xs:documentation>Describes an annotation for entry mapping.</xs:documentation>
+         	</xs:annotation>
+         	<xs:sequence>
+         		<xs:element name="comment" type="commentType"  minOccurs="0" maxOccurs="unbounded"/>
+         		<xs:element name="label" type="labelType"  minOccurs="0" maxOccurs="unbounded"/>
+         	</xs:sequence>
+         	<xs:attribute name="status" type="statusType" />
+         	<xs:attribute name="user" type="xs:string" use="optional" />
+    </xs:complexType>
+    
+    <xs:complexType name="commentType">
+    		<xs:annotation>
+                   <xs:documentation>Describes a comment for entry mapping.</xs:documentation>
+         	</xs:annotation>
+         	<xs:attribute name="text" type="xs:string" />
+         	<xs:attribute name="timeAdded" type="xs:date" />
+         	<xs:attribute name="user" type="xs:string" />
+    </xs:complexType>
+    
+    <xs:complexType name="labelType">
+    		<xs:annotation>
+                   <xs:documentation>Describes a comment for entry mapping.</xs:documentation>
+         	</xs:annotation>
+         	<xs:attribute name="text" type="xs:string" /> <!--  need to be changed into enum when we find out values -->
+         	<xs:attribute name="timeAdded" type="xs:date" />
+         	<xs:attribute name="user" type="xs:string" />
+    </xs:complexType>
+    
+       	<xs:complexType name="uniprotEntryType">
+			 <xs:annotation>
+                   <xs:documentation>Describes a single Uniprot entry.</xs:documentation>
+         	</xs:annotation>
+            <xs:attribute name="uniprotAccession" type="xs:string" />
+         	<xs:attribute name="entryType" type="entryTypeType" />
+         	<xs:attribute name="entryVersion" type="xs:int" />
+         	<xs:attribute name="sequenceVersion" type="xs:int" />
+         	<xs:attribute name="upi" type="xs:string" />
+         	<xs:attribute name="md5" type="xs:string" />
+         	<xs:attribute name="ensemblDerived" type="xs:boolean" />
+         	<xs:attribute name="isoform" type="xs:boolean" />
+         	<xs:attribute name="uniprotTaxId" type="xs:int" />
+        </xs:complexType>
+        
+        <xs:complexType name="ensemblTranscriptType">
+			 <xs:annotation>
+                   <xs:documentation>Describes a single Ensembl transcript.</xs:documentation>
+         	</xs:annotation>
+            <xs:attribute name="enstId" type="xs:string" />
+         	<xs:attribute name="enstVersion" type="xs:int" />
+         	<xs:attribute name="upi" type="xs:string" />
+         	<xs:attribute name="biotype" type="xs:string" /> <!-- probably can be reduced to proper type -->
+         	<xs:attribute name="deleted" type="xs:boolean" />
+         	<xs:attribute name="seqRegionStart" type="xs:int" />
+         	<xs:attribute name="seqRegionEnd" type="xs:int" />
+         	<xs:attribute name="ensgId" type="xs:string" />
+        </xs:complexType>                   
+
+     <xs:simpleType name="entryTypeType">
+       <xs:annotation>
+          <xs:documentation>
+             Enumeration for entryType. 0-SwissProt, 1-Trembl.
+          </xs:documentation>
+       </xs:annotation>
+       <xs:restriction base="xs:string">
+            <xs:enumeration value="Swiss-Prot"/>
+            <xs:enumeration value="TrEMBL"/>
+		    <xs:enumeration value="Swiss-Prot isoform"/>
+       </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
