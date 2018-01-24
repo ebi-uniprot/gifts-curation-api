@@ -1,8 +1,9 @@
 package uk.ac.ebi.uniprot.giftscut.rest;
 
 import uk.ac.ebi.uniprot.giftscut.dao.EntryMappingDAO;
-import uk.ac.ebi.uniprot.giftscut.jaxb.SpecieMappings;
+import uk.ac.ebi.uniprot.giftscut.jaxb.EntryMapping;
 
+import java.util.List;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -15,12 +16,10 @@ public class GiftsCutEntryService {
 
     @GET
     @Path("/entries")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public SpecieMappings getEntries(@Context UriInfo uriInfo) {
+    @Produces({MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML})
+    public List<EntryMapping> getEntries(@Context UriInfo uriInfo) {
         // all possible filters
 
-        uriInfo.getQueryParameters();
-
-        return EntryMappingDAOfindByTaxid(Integer.parseInt(taxId));
+        return entryMappingDAO.findLatestEntries(uriInfo.getQueryParameters());
     }
 }
