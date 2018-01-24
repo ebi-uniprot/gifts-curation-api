@@ -225,7 +225,7 @@ public class EntryMappingDAO {
                 " and mh.uniprot_release = u.release_version" +
                 " and eg.ensembl_release=esh.ensembl_release" +
                 filter +
-                +" limit 0, 30;";
+                " limit 0, 30;";
         return findEntryMappingList(params, sql);
     }
 }
