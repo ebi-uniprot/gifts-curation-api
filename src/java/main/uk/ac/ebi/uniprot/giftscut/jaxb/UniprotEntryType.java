@@ -6,14 +6,15 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
  * Describes a single Uniprot entry.
- * 
- * <p>Java class for uniprotEntryType complex type.
- * 
- * <p>The following schema fragment specifies the expected content contained within this class.
- * 
+ *
+ * <p>
+ * Java class for uniprotEntryType complex type.
+ *
+ * <p>
+ * The following schema fragment specifies the expected content contained within this class.
+ *
  * <pre>
  * &lt;complexType name="uniprotEntryType">
  *   &lt;complexContent>
@@ -30,8 +31,8 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;/complexContent>
  * &lt;/complexType>
  * </pre>
- * 
- * 
+ *
+ *
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "uniprotEntryType")
@@ -53,14 +54,14 @@ public class UniprotEntryType {
     protected Boolean ensemblDerived;
     @XmlAttribute(name = "isoform")
     protected Boolean isoform;
+    @XmlAttribute(name = "uniprotTaxId")
+    protected Integer uniprotTaxId;
 
     /**
      * Gets the value of the uniprotAccession property.
+     *
+     * @return possible object is {@link String }
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
     public String getUniprotAccession() {
         return uniprotAccession;
@@ -68,11 +69,10 @@ public class UniprotEntryType {
 
     /**
      * Sets the value of the uniprotAccession property.
-     * 
+     *
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setUniprotAccession(String value) {
         this.uniprotAccession = value;
@@ -80,11 +80,9 @@ public class UniprotEntryType {
 
     /**
      * Gets the value of the entryType property.
+     *
+     * @return possible object is {@link EntryTypeType }
      * 
-     * @return
-     *     possible object is
-     *     {@link EntryTypeType }
-     *     
      */
     public EntryTypeType getEntryType() {
         return entryType;
@@ -92,11 +90,10 @@ public class UniprotEntryType {
 
     /**
      * Sets the value of the entryType property.
-     * 
+     *
      * @param value
-     *     allowed object is
-     *     {@link EntryTypeType }
-     *     
+     *            allowed object is {@link EntryTypeType }
+     * 
      */
     public void setEntryType(EntryTypeType value) {
         this.entryType = value;
@@ -104,11 +101,9 @@ public class UniprotEntryType {
 
     /**
      * Gets the value of the entryVersion property.
+     *
+     * @return possible object is {@link Integer }
      * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
      */
     public Integer getEntryVersion() {
         return entryVersion;
@@ -116,11 +111,10 @@ public class UniprotEntryType {
 
     /**
      * Sets the value of the entryVersion property.
-     * 
+     *
      * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *            allowed object is {@link Integer }
+     * 
      */
     public void setEntryVersion(Integer value) {
         this.entryVersion = value;
@@ -128,11 +122,9 @@ public class UniprotEntryType {
 
     /**
      * Gets the value of the sequenceVersion property.
+     *
+     * @return possible object is {@link Integer }
      * 
-     * @return
-     *     possible object is
-     *     {@link Integer }
-     *     
      */
     public Integer getSequenceVersion() {
         return sequenceVersion;
@@ -140,11 +132,10 @@ public class UniprotEntryType {
 
     /**
      * Sets the value of the sequenceVersion property.
-     * 
+     *
      * @param value
-     *     allowed object is
-     *     {@link Integer }
-     *     
+     *            allowed object is {@link Integer }
+     * 
      */
     public void setSequenceVersion(Integer value) {
         this.sequenceVersion = value;
@@ -152,11 +143,9 @@ public class UniprotEntryType {
 
     /**
      * Gets the value of the upi property.
+     *
+     * @return possible object is {@link String }
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
     public String getUpi() {
         return upi;
@@ -164,11 +153,10 @@ public class UniprotEntryType {
 
     /**
      * Sets the value of the upi property.
-     * 
+     *
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setUpi(String value) {
         this.upi = value;
@@ -176,11 +164,9 @@ public class UniprotEntryType {
 
     /**
      * Gets the value of the md5 property.
+     *
+     * @return possible object is {@link String }
      * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
      */
     public String getMd5() {
         return md5;
@@ -188,11 +174,10 @@ public class UniprotEntryType {
 
     /**
      * Sets the value of the md5 property.
-     * 
+     *
      * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
+     *            allowed object is {@link String }
+     * 
      */
     public void setMd5(String value) {
         this.md5 = value;
@@ -200,11 +185,9 @@ public class UniprotEntryType {
 
     /**
      * Gets the value of the ensemblDerived property.
+     *
+     * @return possible object is {@link Boolean }
      * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
      */
     public Boolean isEnsemblDerived() {
         return ensemblDerived;
@@ -212,11 +195,10 @@ public class UniprotEntryType {
 
     /**
      * Sets the value of the ensemblDerived property.
-     * 
+     *
      * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *            allowed object is {@link Boolean }
+     * 
      */
     public void setEnsemblDerived(Boolean value) {
         this.ensemblDerived = value;
@@ -224,11 +206,9 @@ public class UniprotEntryType {
 
     /**
      * Gets the value of the isoform property.
+     *
+     * @return possible object is {@link Boolean }
      * 
-     * @return
-     *     possible object is
-     *     {@link Boolean }
-     *     
      */
     public Boolean isIsoform() {
         return isoform;
@@ -236,14 +216,21 @@ public class UniprotEntryType {
 
     /**
      * Sets the value of the isoform property.
-     * 
+     *
      * @param value
-     *     allowed object is
-     *     {@link Boolean }
-     *     
+     *            allowed object is {@link Boolean }
+     * 
      */
     public void setIsoform(Boolean value) {
         this.isoform = value;
+    }
+
+    public Integer getUniprotTaxId() {
+        return uniprotTaxId;
+    }
+
+    public void setUniprotTaxId(Integer uniprotTaxId) {
+        this.uniprotTaxId = uniprotTaxId;
     }
 
 }
