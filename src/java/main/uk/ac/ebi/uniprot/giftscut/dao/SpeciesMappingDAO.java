@@ -41,7 +41,7 @@ public class SpeciesMappingDAO {
                 specieMapping.setEntriesUnmapped(rs.getInt("entries_unmapped"));
                 specieMapping.setUniprotRelease(rs.getString("uniprot_release"));
                 specieMapping.setUniprotTaxId(rs.getInt("uniprot_taxid"));
-                specieMappingHistory.getSpecieMapping().add(specieMapping);
+                specieMappingHistory.getSpeciesMapping().add(specieMapping);
                 specieMappings.getSpeciesMappingHistory().add(specieMappingHistory);
             }
         } catch (Exception e) {

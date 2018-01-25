@@ -47,7 +47,7 @@ public class EntryMappingDAO {
                 specieMapping.setUniprotTaxId(rs.getInt("uniprot_taxid"));
                 specieMapping.getEntryMapping().add(processRow(rs));
             }
-            specieMappingHistory.getSpecieMapping().addAll(localMapping.values());
+            specieMappingHistory.getSpeciesMapping().addAll(localMapping.values());
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException(e);
