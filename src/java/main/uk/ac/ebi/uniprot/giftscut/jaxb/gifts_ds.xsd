@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
-	<xs:element name="specieMappings">
+	<xs:element name="speciesMappings">
 		<xs:complexType>
 			 <xs:annotation>
                        <xs:documentation>Describes a collection of specie mappings.</xs:documentation>
       	     </xs:annotation>
 			<xs:sequence>
-			    <xs:element ref="specieMappingHistory" minOccurs="1" maxOccurs="unbounded" />
+			    <xs:element ref="speciesMappingHistory" minOccurs="1" maxOccurs="unbounded" />
 	         </xs:sequence>
 		</xs:complexType>
 	</xs:element>
 	
-	<xs:element name="specieMappingHistory"> 
+	<xs:element name="speciesMappingHistory">
     <xs:complexType>
         <xs:annotation>
             <xs:documentation>Describes specie mapping history.</xs:documentation>
         </xs:annotation>
              <xs:sequence>
-			    <xs:element ref="specieMapping" minOccurs="1" maxOccurs="unbounded" />
+			    <xs:element ref="speciesMapping" minOccurs="1" maxOccurs="unbounded" />
 	         </xs:sequence>
         </xs:complexType>
 	</xs:element>
 	
-	<xs:element name="specieMapping">
+	<xs:element name="speciesMapping">
 		<xs:complexType>
 			 <xs:annotation>
-                       <xs:documentation>Describes a specie mapping.</xs:documentation>
+                       <xs:documentation>Describes a species mapping.</xs:documentation>
          	</xs:annotation>
         	<xs:sequence>
         		<xs:element ref="entryMapping" minOccurs="0" maxOccurs="unbounded"/>
         	</xs:sequence>
-        	<xs:attribute name="specie" type="xs:string" />
+        	<xs:attribute name="species" type="xs:string" />
         	<xs:attribute name="ensemblTaxId" type="xs:int" />
         	<xs:attribute name="uniprotTaxId" type="xs:int" />
         	<xs:attribute name="ensemblRelease" type="xs:int" />
