@@ -36,10 +36,10 @@ import javax.xml.bind.annotation.XmlType;
     "specieMapping"
 })
 @XmlRootElement(name = "specieMappingHistory")
-public class SpecieMappingHistory {
+public class SpeciesMappingHistory {
 
     @XmlElement(required = true)
-    protected List<SpecieMapping> specieMapping;
+    protected List<SpeciesMapping> specieMapping;
 
     /**
      * Gets the value of the specieMapping property.
@@ -59,13 +59,13 @@ public class SpecieMappingHistory {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link SpecieMapping }
+     * {@link SpeciesMapping }
      * 
      * 
      */
-    public List<SpecieMapping> getSpecieMapping() {
+    public List<SpeciesMapping> getSpecieMapping() {
         if (specieMapping == null) {
-            specieMapping = new ArrayList<SpecieMapping>();
+            specieMapping = new ArrayList<SpeciesMapping>();
         }
         return this.specieMapping;
     }

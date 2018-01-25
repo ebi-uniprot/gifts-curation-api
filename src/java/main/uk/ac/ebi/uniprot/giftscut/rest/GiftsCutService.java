@@ -3,9 +3,9 @@ package uk.ac.ebi.uniprot.giftscut.rest;
 import uk.ac.ebi.uniprot.giftscut.dao.EntryMappingDAO;
 import uk.ac.ebi.uniprot.giftscut.dao.SpecieMappingDAO;
 import uk.ac.ebi.uniprot.giftscut.dao.SpeciesMappingDAO;
-import uk.ac.ebi.uniprot.giftscut.jaxb.SpecieMapping;
-import uk.ac.ebi.uniprot.giftscut.jaxb.SpecieMappingHistory;
-import uk.ac.ebi.uniprot.giftscut.jaxb.SpecieMappings;
+import uk.ac.ebi.uniprot.giftscut.jaxb.SpeciesMapping;
+import uk.ac.ebi.uniprot.giftscut.jaxb.SpeciesMappingHistory;
+import uk.ac.ebi.uniprot.giftscut.jaxb.SpeciesMappings;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -25,14 +25,14 @@ public class GiftsCutService {
     @GET
     @Path("/history/{taxId}")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public SpecieMappingHistory getSpecieHistoryMapping(@PathParam("taxId") String taxId) {
+    public SpeciesMappingHistory getSpecieHistoryMapping(@PathParam("taxId") String taxId) {
         return specieMappingDAO.findByTaxid(Integer.parseInt(taxId));
     }
 
     @GET
     @Path("/latest")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public SpecieMappings getLatestSpeciesMapping() {
+    public SpeciesMappings getLatestSpeciesMapping() {
         return speciesMappingDAO.findLatest();
     }
 
@@ -40,21 +40,21 @@ public class GiftsCutService {
     @GET
     @Path("/latest/{taxId}")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public SpecieMapping getLatestSpeciesMapping(@PathParam("taxId") String taxId) {
+    public SpeciesMapping getLatestSpeciesMapping(@PathParam("taxId") String taxId) {
         return specieMappingDAO.findLatestByTaxid(Integer.parseInt(taxId));
     }
 
     @GET
     @Path("/entry/history")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public SpecieMappingHistory getUniprotMappingHistory(@Context UriInfo uriInfo) {
+    public SpeciesMappingHistory getUniprotMappingHistory(@Context UriInfo uriInfo) {
         return entryMappingDAO.findHistory(uriInfo.getQueryParameters());
     }
 
     @GET
     @Path("/entry/latest/mapping")
     @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    public SpecieMapping getMappingLatest(@Context UriInfo uriInfo) {
+    public SpeciesMapping getMappingLatest(@Context UriInfo uriInfo) {
         return entryMappingDAO.findLatest(uriInfo.getQueryParameters());
     }
 

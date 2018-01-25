@@ -3,8 +3,8 @@ package uk.ac.ebi.uniprot.giftscut.dao;
 import uk.ac.ebi.uniprot.giftscut.jaxb.EnsemblTranscriptType;
 import uk.ac.ebi.uniprot.giftscut.jaxb.EntryMapping;
 import uk.ac.ebi.uniprot.giftscut.jaxb.EntryTypeType;
-import uk.ac.ebi.uniprot.giftscut.jaxb.SpecieMapping;
-import uk.ac.ebi.uniprot.giftscut.jaxb.SpecieMappingHistory;
+import uk.ac.ebi.uniprot.giftscut.jaxb.SpeciesMapping;
+import uk.ac.ebi.uniprot.giftscut.jaxb.SpeciesMappingHistory;
 import uk.ac.ebi.uniprot.giftscut.jaxb.UniprotEntryType;
 
 import java.sql.Connection;
@@ -22,9 +22,9 @@ import javax.ws.rs.core.MultivaluedMap;
  */
 public class EntryMappingDAO {
 
-    private SpecieMappingHistory findEntryMappings(List<String> parameters, String sql) {
-        Map<String, SpecieMapping> localMapping = new TreeMap<>();
-        SpecieMappingHistory specieMappingHistory = new SpecieMappingHistory();
+    private SpeciesMappingHistory findEntryMappings(List<String> parameters, String sql) {
+        Map<String, SpeciesMapping> localMapping = new TreeMap<>();
+        SpeciesMappingHistory specieMappingHistory = new SpeciesMappingHistory();
         Connection c = null;
         try {
             c = ConnectionHelper.getConnection();
@@ -35,9 +35,10 @@ public class EntryMappingDAO {
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                SpecieMapping specieMapping = localMapping.computeIfAbsent(
-                        rs.getString("uniprot_release") + "_" + rs.getInt("ensembl_release"), k -> new SpecieMapping());
-                specieMapping.setSpecie(rs.getString("species"));
+                SpeciesMapping specieMapping = localMapping.computeIfAbsent(
+                        rs.getString("uniprot_release") + "_" + rs.getInt("ensembl_release"),
+                        k -> new SpeciesMapping());
+                specieMapping.setSpecies(rs.getString("species"));
                 specieMapping.setEnsemblRelease(rs.getInt("ensembl_release"));
                 specieMapping.setEnsemblTaxId(rs.getInt("ensembl_tax_id"));
                 specieMapping.setEntriesMapped(rs.getInt("entries_mapped"));
@@ -56,10 +57,10 @@ public class EntryMappingDAO {
         return specieMappingHistory;
     }
 
-    private SpecieMapping findEntryMapping(List<String> parameters, String sql) {
-        Map<String, SpecieMapping> localMapping = new TreeMap<>();
+    private SpeciesMapping findEntryMapping(List<String> parameters, String sql) {
+        Map<String, SpeciesMapping> localMapping = new TreeMap<>();
         Connection c = null;
-        SpecieMapping specieMapping = new SpecieMapping();
+        SpeciesMapping specieMapping = new SpeciesMapping();
         try {
             c = ConnectionHelper.getConnection();
             PreparedStatement ps = c.prepareStatement(sql);
@@ -68,7 +69,7 @@ public class EntryMappingDAO {
             }
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                specieMapping.setSpecie(rs.getString("species"));
+                specieMapping.setSpecies(rs.getString("species"));
                 specieMapping.setEnsemblRelease(rs.getInt("ensembl_release"));
                 specieMapping.setEnsemblTaxId(rs.getInt("ensembl_tax_id"));
                 specieMapping.setEntriesMapped(rs.getInt("entries_mapped"));
@@ -117,7 +118,7 @@ public class EntryMappingDAO {
         return "";
     }
 
-    public SpecieMappingHistory findHistory(MultivaluedMap<String, String> parameters) {
+    public SpeciesMappingHistory findHistory(MultivaluedMap<String, String> parameters) {
         String filter = "";
         List<String> params = new ArrayList<>();
         filter += processParameters(params, parameters, "enstID", "et.enst_id");
@@ -143,7 +144,7 @@ public class EntryMappingDAO {
         return findEntryMappings(params, sql);
     }
 
-    public SpecieMapping findLatest(MultivaluedMap<String, String> parameters) {
+    public SpeciesMapping findLatest(MultivaluedMap<String, String> parameters) {
         String filter = "";
         List<String> params = new ArrayList<>();
         filter += processParameters(params, parameters, "enstID", "et.enst_id");

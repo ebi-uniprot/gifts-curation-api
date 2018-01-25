@@ -33,13 +33,13 @@ import javax.xml.bind.annotation.XmlType;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = {
-    "specieMappingHistory"
+    "speciesMappingHistory"
 })
-@XmlRootElement(name = "specieMappings")
-public class SpecieMappings {
+@XmlRootElement(name = "speciesMappings")
+public class SpeciesMappings {
 
     @XmlElement(required = true)
-    protected List<SpecieMappingHistory> specieMappingHistory;
+    protected List<SpeciesMappingHistory> speciesMappingHistory;
 
     /**
      * Gets the value of the specieMappingHistory property.
@@ -59,15 +59,15 @@ public class SpecieMappings {
      * 
      * <p>
      * Objects of the following type(s) are allowed in the list
-     * {@link SpecieMappingHistory }
+     * {@link SpeciesMappingHistory }
      * 
      * 
      */
-    public List<SpecieMappingHistory> getSpecieMappingHistory() {
-        if (specieMappingHistory == null) {
-            specieMappingHistory = new ArrayList<SpecieMappingHistory>();
+    public List<SpeciesMappingHistory> getSpeciesMappingHistory() {
+        if (speciesMappingHistory == null) {
+            speciesMappingHistory = new ArrayList<SpeciesMappingHistory>();
         }
-        return this.specieMappingHistory;
+        return this.speciesMappingHistory;
     }
 
 }

@@ -45,12 +45,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
 @XmlType(name = "", propOrder = {
     "entryMapping"
 })
-@XmlRootElement(name = "specieMapping")
-public class SpecieMapping {
+@XmlRootElement(name = "speciesMapping")
+public class SpeciesMapping {
 
     protected List<EntryMapping> entryMapping;
-    @XmlAttribute(name = "specie")
-    protected String specie;
+    @XmlAttribute(name = "species")
+    protected String species;
     @XmlAttribute(name = "ensemblTaxId")
     protected Integer ensemblTaxId;
     @XmlAttribute(name = "uniprotTaxId")
@@ -104,8 +104,8 @@ public class SpecieMapping {
      *     {@link String }
      *     
      */
-    public String getSpecie() {
-        return specie;
+    public String getSpecies() {
+        return species;
     }
 
     /**
@@ -116,8 +116,8 @@ public class SpecieMapping {
      *     {@link String }
      *     
      */
-    public void setSpecie(String value) {
-        this.specie = value;
+    public void setSpecies(String value) {
+        this.species = value;
     }
 
     /**

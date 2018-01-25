@@ -30,27 +30,27 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link SpecieMappings }
+     * Create an instance of {@link SpeciesMappings }
      * 
      */
-    public SpecieMappings createSpecieMappings() {
-        return new SpecieMappings();
+    public SpeciesMappings createSpecieMappings() {
+        return new SpeciesMappings();
     }
 
     /**
-     * Create an instance of {@link SpecieMappingHistory }
+     * Create an instance of {@link SpeciesMappingHistory }
      * 
      */
-    public SpecieMappingHistory createSpecieMappingHistory() {
-        return new SpecieMappingHistory();
+    public SpeciesMappingHistory createSpecieMappingHistory() {
+        return new SpeciesMappingHistory();
     }
 
     /**
-     * Create an instance of {@link SpecieMapping }
+     * Create an instance of {@link SpeciesMapping }
      * 
      */
-    public SpecieMapping createSpecieMapping() {
-        return new SpecieMapping();
+    public SpeciesMapping createSpecieMapping() {
+        return new SpeciesMapping();
     }
 
     /**
